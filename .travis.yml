@@ -6,8 +6,9 @@ branches:
 before_install:
   - git submodule foreach --recursive 'git checkout master; git ls-files | grep -v README | grep -v CNAME | xargs -r git rm'
 install:
+  - cabal init
   - curl http://bin.begriffs.com/hakyll/cabal-sandbox.tar.xz | tar xJ
-  - ls
+  - ls -a
   - cabal configure --disable-library-profiling --disable-tests --disable-library-coverage --disable-benchmarks --disable-split-objs
 before_script:
   - git config --global user.email "$GIT_EMAIL"
